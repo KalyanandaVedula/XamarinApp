@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TechApp2.Views.JobList">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="JOBS ASSIGNED TO USER" FontSize="17"
+                VerticalOptions="CenterAndExpand" Margin="0,0,0,0"
+                HorizontalOptions="CenterAndExpand" />
+            <DatePicker HorizontalOptions="End"  DateSelected="DatePicker_DateSelected" Date="{Binding SelectedDate}" />
+            <ListView x:Name="JobListView" ItemSelected="JobListView_ItemSelected" IsPullToRefreshEnabled="True"
+            ItemsSource="{Binding jobs}">
+                <ListView.ItemTemplate>
+                    
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10,0,20,0">
+                                <Grid x:Name="grd">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions >
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding JobNo}"  Grid.Row="0" Grid.Column="0" TextColor="Gray" FontAttributes="Bold" FontSize="Small" HorizontalOptions="StartAndExpand" HeightRequest="20" />
+                                    <Label Text="{Binding ProjectName}" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding JobStatus}"  Grid.Row="0" Grid.Column="2"/>                                    
+                                    <Label Text="{Binding SiteName}" Grid.Row="1" Grid.Column="2"  />                                           
+                                    <Label Text="{Binding TechnicianName}" Grid.Row="1" Grid.Column="0" VerticalOptions="Start" />
+                                    <Label Text="{Binding JobDate}" Grid.Row="0" Grid.Column="3" VerticalOptions="EndAndExpand" />                                        
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>                   
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <!--<StackLayout HorizontalOptions="Start" VerticalOptions="StartAndExpand">
+            <Button Text="BACK" x:Name="btnback" BackgroundColor="Blue" Clicked="btnback_Clicked"   TextColor="White" HeightRequest="50" VerticalOptions="Center"></Button>
+            </StackLayout>-->
+        </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>
